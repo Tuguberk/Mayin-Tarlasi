@@ -1,0 +1,26 @@
+def bosluk_hesapla(self):
+        if self.satır-1>0 and self.sutun-1>0:
+            if butonlar["buton"+str(self.satır-1)+","+str(self.sutun-1)].mayın_mı() == True:
+                butonlar["buton"+str(self.satır-1)+","+str(self.sutun-1)].bosluk_hesapla()
+        if self.satır-1>0:
+            if butonlar["buton"+str(self.satır-1)+","+str(self.sutun)].mayın_mı() == True:
+                butonlar["buton"+str(self.satır-1)+","+str(self.sutun)].bosluk_hesapla()
+        if self.satır-1>0 and self.sutun+1>0:
+            if butonlar["buton"+str(self.satır-1)+","+str(self.sutun+1)].mayın_mı() == True:
+                butonlar["buton"+str(self.satır-1)+","+str(self.sutun+1)].bosluk_hesapla()
+        if self.sutun-1>0:
+            if butonlar["buton"+str(self.satır)+","+str(self.sutun-1)].mayın_mı() == True:
+                butonlar["buton"+str(self.satır)+","+str(self.sutun-1)].bosluk_hesapla()
+        if self.sutun+1>0:
+            if butonlar["buton"+str(self.satır)+","+str(self.sutun+1)].mayın_mı() == True:
+                butonlar["buton"+str(self.satır)+","+str(self.sutun+1)].bosluk_hesapla()
+        if self.satır+1>0 and self.sutun-1>0:
+            if butonlar["buton"+str(self.satır+1)+","+str(self.sutun-1)].mayın_mı() == True:
+                butonlar["buton"+str(self.satır+1)+","+str(self.sutun-1)].bosluk_hesapla()
+        if self.satır+1>0:
+            if butonlar["buton"+str(self.satır+1)+","+str(self.sutun)].mayın_mı() == True:
+                butonlar["buton"+str(self.satır+1)+","+str(self.sutun)].bosluk_hesapla()
+
+        if self.satır+1>0 and self.sutun+1>0:
+            if butonlar["buton"+str(self.satır+1)+","+str(self.sutun+1)].mayın_mı() == True:
+                butonlar["buton"+str(self.satır+1)+","+str(self.sutun+1)].bosluk_hesapla()
