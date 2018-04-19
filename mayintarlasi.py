@@ -6,6 +6,7 @@ import random as random
 satır = 10
 sutun = 10
 mayınSayısı = 1
+bos_yerler = []
 butonlar = {}
 kalan_blok_sayısı = satır * sutun - mayınSayısı
 print(kalan_blok_sayısı)
@@ -41,6 +42,11 @@ class buton():
                     self.komsuları_bul()
                     self.buton.configure(text = str(self.komsu_degeri),bg = 'red',fg=renk1,activebackground='red',activeforeground='red')
                     self.buton_kontrol = 1
+                    if self.komsu_degeri == 0:
+                        global bos_yerler
+                        for i in bos_yerler:
+                            butonlar[i].mayın_coz()
+                            butonlar[i].bosluk_hesapla()
                     global kalan_blok_sayısı
                     kalan_blok_sayısı -=1
                     if kalan_blok_sayısı == 0:
@@ -96,31 +102,21 @@ class buton():
             pass
 
     def bosluk_hesapla(self):
-        if self.satır-1>0 and self.sutun-1>0:
-            if butonlar["buton"+str(self.satır-1)+","+str(self.sutun-1)].mayın_mı() == True:
-                butonlar["buton"+str(self.satır-1)+","+str(self.sutun-1)].bosluk_hesapla()
-        if self.satır-1>0:
-            if butonlar["buton"+str(self.satır-1)+","+str(self.sutun)].mayın_mı() == True:
-                butonlar["buton"+str(self.satır-1)+","+str(self.sutun)].bosluk_hesapla()
-        if self.satır-1>0 and self.sutun+1>0:
-            if butonlar["buton"+str(self.satır-1)+","+str(self.sutun+1)].mayın_mı() == True:
-                butonlar["buton"+str(self.satır-1)+","+str(self.sutun+1)].bosluk_hesapla()
-        if self.sutun-1>0:
-            if butonlar["buton"+str(self.satır)+","+str(self.sutun-1)].mayın_mı() == True:
-                butonlar["buton"+str(self.satır)+","+str(self.sutun-1)].bosluk_hesapla()
-        if self.sutun+1>0:
-            if butonlar["buton"+str(self.satır)+","+str(self.sutun+1)].mayın_mı() == True:
-                butonlar["buton"+str(self.satır)+","+str(self.sutun+1)].bosluk_hesapla()
-        if self.satır+1>0 and self.sutun-1>0:
-            if butonlar["buton"+str(self.satır+1)+","+str(self.sutun-1)].mayın_mı() == True:
-                butonlar["buton"+str(self.satır+1)+","+str(self.sutun-1)].bosluk_hesapla()
-        if self.satır+1>0:
-            if butonlar["buton"+str(self.satır+1)+","+str(self.sutun)].mayın_mı() == True:
-                butonlar["buton"+str(self.satır+1)+","+str(self.sutun)].bosluk_hesapla()
-
-        if self.satır+1>0 and self.sutun+1>0:
-            if butonlar["buton"+str(self.satır+1)+","+str(self.sutun+1)].mayın_mı() == True:
-                butonlar["buton"+str(self.satır+1)+","+str(self.sutun+1)].bosluk_hesapla()
+        global satır
+        global sutun
+        global bos_yerler
+        if self.satır -1 > -1 and self.satır <= satır and self.sutun-1 > -1 and self.sutun <= sutun and butonlar["buton"+str(self.satır-1)+","+str(self.sutun)].komsu_degeri == 0:
+            bos_yerler.append(butonlar["buton"+str(self.satır-1)+","+str(self.sutun)])
+            
+        if self.satır -1 > -1 and self.satır <= satır and self.sutun-1 > -1 and self.sutun <= sutun and butonlar["buton"+str(self.satır)+","+str(self.sutun+1)].komsu_degeri == 0:
+            bos_yerler.append(butonlar["buton"+str(self.satır)+","+str(self.sutun+1)])
+            
+        if self.satır -1 > -1 and self.satır <= satır and self.sutun-1 > -1 and self.sutun <= sutun and butonlar["buton"+str(self.satır)+","+str(self.sutun-1)].komsu_degeri == 0:
+            bos_yerler.append(butonlar["buton"+str(self.satır)+","+str(self.sutun-1)])
+            
+        if self.satır -1 > -1 and self.satır <= satır and self.sutun-1 > -1 and self.sutun <= sutun and butonlar["buton"+str(self.satır+1)+","+str(self.sutun)].komsu_degeri == 0:
+            bos_yerler.append(butonlar["buton"+str(self.satır+1)+","+str(self.sutun)])
+            
 
 ####Genel Fonksiyonlar
 def ekranı_ortala():
